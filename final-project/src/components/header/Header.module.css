@@ -1,0 +1,30 @@
+/* css styling for header */
+
+nav {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.navItem.current a {
+    color: #7E7E7E;
+    text-decoration: underline;
+}
+
+.logo {
+    font-size: 1.7em;
+}
+
+.navLinks {
+    display: flex;
+    font-size: 1.5em;
+    gap: 20px;
+    list-style: none;
+}
+
+.navLinks a {
+    text-decoration: none;
+    color: white;
+}
+
