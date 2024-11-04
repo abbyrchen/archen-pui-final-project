@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/archen-pui-final-project/static/css/main.dc4d6ff2.css",
+    "main.js": "/archen-pui-final-project/static/js/main.2c604eda.js",
+    "index.html": "/archen-pui-final-project/index.html",
+    "main.dc4d6ff2.css.map": "/archen-pui-final-project/static/css/main.dc4d6ff2.css.map",
+    "main.2c604eda.js.map": "/archen-pui-final-project/static/js/main.2c604eda.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc4d6ff2.css",
+    "static/js/main.2c604eda.js"
+  ]
+}
