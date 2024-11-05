@@ -6,7 +6,9 @@ function Header() {
     return (
         <nav>
             <div className={styles.logo}>
-                <h2>ABBY CHEN</h2>
+                <a href='home.jsx'>
+                    <h2>ABBY CHEN</h2>
+                </a>
             </div>
 
             <ul className={styles.navLinks}>
