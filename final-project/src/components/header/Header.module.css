@@ -7,18 +7,20 @@ nav {
     padding: 0px 10px;
 }
 
-.navItem.current a {
-    color: #7E7E7E;
-    text-decoration: underline;
-}
-
+/* logo styling */
 .logo {
     font-size: 1.3em;
 }
 
 .logo a {
     text-decoration: none;
-    color: white;
+    color: inherit;
+}
+
+/* nav items styling */
+.navItem.current a {
+    color: #7E7E7E;
+    text-decoration: underline;
 }
 
 .navLinks {
@@ -30,6 +32,6 @@ nav {
 
 .navLinks a {
     text-decoration: none;
-    color: white;
+    color: inherit;
 }
 

@@ -1,28 +1,31 @@
-import { React } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
-// navigation bar header
+// navbar header
 function Header() {
     return (
         <nav>
             <div className={styles.logo}>
-                <a href='home.jsx'>
+                <Link to="/">
                     <h2>ABBY CHEN</h2>
-                </a>
+                </Link>
             </div>
 
             <ul className={styles.navLinks}>
                 <li className={`${styles.navItem} ${styles.current}`}>
-                    <a href='home.jsx'>work</a>
+                    <Link to="/">work</Link>
                 </li>
                 <li className={styles.navItem}>
-                    <a href='play.jsx'>play</a>
+                    <Link to="/play">play</Link>
                 </li>
                 <li className={styles.navItem}>
-                    <a href='about.jsx'>about</a>
+                    <Link to="/about">about</Link>
                 </li>
                 <li className={styles.navItem}>
-                    <a href='' target='_blank'>resume</a>
+                    <a href="path-to-resume.pdf" target="_blank" rel="noopener noreferrer">
+                        resume
+                    </a>
                 </li>
             </ul>
         </nav>

@@ -11,9 +11,9 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/home.jsx" element={<Home />} />
-        <Route path="/play.jsx" element={<Play />} />
-        <Route path="/about.jsx" element={<About />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/play" element={<Play />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </Router>
