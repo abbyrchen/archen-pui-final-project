@@ -10,6 +10,7 @@ nav {
 /* logo styling */
 .logo {
     font-size: 1.3em;
+    padding-left: 4%;
 }
 
 .logo a {
@@ -28,6 +29,7 @@ nav {
     font-size: 1.1em;
     gap: 20px;
     list-style: none;
+    padding-right: 4%;
 }
 
 .navLinks a {

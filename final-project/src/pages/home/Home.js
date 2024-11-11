@@ -6,14 +6,27 @@ import IntroImage from '../../assets/homepage.png';
 
 function Home() {
     return (
-        <div className={styles.landingContainer}>
-            <div className={styles.content}>
-                <img src={IntroImage} alt="Hi, I'm Abby" />
+        <div className={styles.homePage}>
+            {/* landing section w animation */}
+            <div section={styles.landingContainer}>
+                <div className={styles.content}>
+                    <img src={IntroImage} alt="Hi, I'm Abby" />
+                </div>
+                <FontAwesomeIcon 
+                    icon={faChevronDown} 
+                    className={styles.caretIcon}
+                />
             </div>
-            <FontAwesomeIcon 
-                icon={faChevronDown} 
-                className={styles.caretIcon}
-            />
+
+            {/* recent works section */}
+            <div section={styles.recentWorks}>
+
+            </div>
+
+            {/* experience section */}
+            <div section={styles.experience}>
+                
+            </div>
         </div>
     );
 }

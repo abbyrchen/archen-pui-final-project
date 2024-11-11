@@ -9,9 +9,17 @@
 /* general styling */
 body {
   font-family: 'EB Garamond', serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 html {
   background-color: black;
   color: white;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
 }
