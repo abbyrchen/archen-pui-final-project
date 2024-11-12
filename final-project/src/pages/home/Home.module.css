@@ -4,9 +4,11 @@
     text-align: center;
 }
 
+/* landing container styling */
 .content img {
     max-width: 80%;
     height: auto;
+    margin-bottom: 2rem;
 }
 
 .landingContainer {
@@ -14,9 +16,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 110px);
     position: relative;
-    align-items: center;
+    text-align: center;
 }
 
 .caretIcon {
@@ -24,8 +26,29 @@
     width: 40px;
     height: 20px;
     position: absolute;
-    bottom: 3%;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
+}
+
+/* recent works section */
+
+/* my experience section */
+.experience img {
+    width: 25%;
+    height: auto;
+    margin-left: 3rem;
+    margin-top: 6rem;
+}
+
+.experienceTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.experienceTable td {
+    padding: 3%;
+    border-bottom: 1px solid white;
+    text-align: center;
 }
