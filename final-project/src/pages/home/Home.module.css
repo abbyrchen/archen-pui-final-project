@@ -23,10 +23,10 @@
 
 .caretIcon {
     color: white;
-    width: 40px;
-    height: 20px;
+    width: 2vw;
+    height: 1vw;
     position: absolute;
-    bottom: 20px;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
@@ -46,7 +46,7 @@
     width: 90%;
     margin: 0 auto;
     border-collapse: collapse;
-    font-size: 1.2em;
+    font-size: 1.4em;
     table-layout: fixed;
 }
 
