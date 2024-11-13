@@ -1,1 +1,54 @@
 /* css for about page */
+
+@font-face {
+    font-family: 'OptiFlemish';
+    src: url('../../fonts/OPTIFlemish-Script.otf');
+}
+
+.aboutPage {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh-50px);
+    justify-content: space-between;
+}
+
+.aboutImage {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem auto;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 2em
+}
+
+.fancy {
+    font-family: 'OptiFlemish';
+    font-size: 4em;
+}
+
+.aboutContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 2rem;
+    margin: 6%;
+}
+
+.imageContainer img {
+    border-radius: 10px;
+    max-width: 613px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 2rem;
+}
+
+.textContainer {
+    flex: 1;
+    max-width: 600px;
+    font-size: 1.1em;
+    line-height: 1.8;
+}

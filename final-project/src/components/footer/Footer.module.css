@@ -20,6 +20,10 @@
     margin-right: 4rem;
 }
 
+.signature a {
+    color: white;
+}
+
 .icon {
     color: white;
     width: 2vw;

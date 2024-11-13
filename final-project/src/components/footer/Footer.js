@@ -33,7 +33,7 @@ function Footer() {
             </section>
 
             <section className={styles.signature}>
-                <p>made by abby chen, with love <FontAwesomeIcon icon={faHeart} className={styles.icon} /></p>
+                <p>made by <a href="https://github.com/abbyrchen/archen-pui-final-project" target="_blank" rel="noopener noreferrer" className={styles.link}>abby chen</a>, with love <FontAwesomeIcon icon={faHeart} className={styles.icon} /></p>
             </section>
         </div>
     );

@@ -38,7 +38,7 @@ function Header() {
                     </NavLink>
                 </li>
                 <li>
-                    <a href="path-to-resume.pdf" target="_blank" rel="noopener noreferrer" className={styles.navItem}>
+                    <a href="/resume.pdf" target="_blank" className={styles.navItem}>
                         resume
                     </a>
                 </li>
