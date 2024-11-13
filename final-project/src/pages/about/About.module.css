@@ -23,6 +23,11 @@ h1 {
     font-size: 2em
 }
 
+.intro {
+    margin: 0;
+    padding: 0;
+}
+
 .fancy {
     font-family: 'OptiFlemish';
     font-size: 4em;

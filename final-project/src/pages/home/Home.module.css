@@ -1,8 +1,12 @@
 /* css for home page */
-
-.content {
-    text-align: center;
-}
+body, html {
+    overflow-x: hidden;
+    overflow-y: auto; /* Restore vertical scrolling */
+  }
+  
+  body.lock-scroll {
+    overflow-y: hidden; /* Use this class to stop scrolling dynamically */
+  }
 
 /* landing container styling */
 .content img {
@@ -33,6 +37,60 @@
 }
 
 /* recent works section */
+/* Ensure the whole section aligns properly */
+.recentWorks {
+    height: 100vh; /* Full viewport height for the section */
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.recentContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Occupy the full width */
+    height: 100%; /* Occupy the full height */
+}
+
+.sectionTitle {
+    transform: rotate(-90deg);
+    font-size: 1.2em;
+    letter-spacing: 5px;
+    left: 10%;
+    position: absolute;
+    top: 50%;
+}
+
+.swiperContainer {
+    width: 57%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.workSlide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.projectImage {
+    max-width: 100%; /* Scale image horizontally */
+    max-height: 100%; /* Scale image vertically */
+    object-fit: contain; /* Ensure no cropping of image */
+    margin: 0 auto;
+}
+
+
 
 /* my experience section */
 .experience img {
