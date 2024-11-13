@@ -3,8 +3,8 @@ import './App.css';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
-import About from './pages/About';
-import Play from './pages/Play';
+import About from './pages/about/About';
+import Play from './pages/play/Play';
 
 function App() {
   return (
