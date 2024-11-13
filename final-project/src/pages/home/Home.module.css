@@ -43,12 +43,23 @@
 }
 
 .experienceTable {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     border-collapse: collapse;
+    font-size: 1.2em;
+    table-layout: fixed;
 }
 
 .experienceTable td {
     padding: 3%;
     border-bottom: 1px solid white;
     text-align: center;
+}
+
+.experienceTable td:first-child {
+    text-align: left;
+}
+
+.experienceTable td:last-child {
+    text-align: right;
 }
