@@ -22,11 +22,20 @@ const recentWorks = [
     { id: 1, src: InformativityImg, alt: 'informativity project', title: 'Informativity', tags: ['User Research', 'UX Design'] },
     { id: 2, src: BAAImg, alt: 'CMU BAA website redesign', title: 'Cmu Baa', tags: ['Frontend Development', 'UX Design'] },
     { id: 3, src: wildMeImg, alt: 'WildMe research', title: 'Wild Me', tags: ['User Research'] }
-]
+];
 
 function Home() {
     const swiperRef = useRef(null);
     const [isLocked, setIsLocked] = useState(false);
+    const [caretVisible, setCaretVisible] = useState(true);
+    const recentWorksRef = useRef(null);
+
+    const handleCaretClick = () => {
+        if (recentWorksRef.current) {
+            recentWorksRef.current.scrollIntoView({ behavior: 'smooth' });
+            setCaretVisible(false); // hide caret on click
+        }
+    }
 
     const handleScroll = () => {
         const recentWorksElement = document.querySelector(`.${styles.recentWorks}`);
@@ -34,11 +43,13 @@ function Home() {
         const isInViewport = rect.top <= 0 && rect.bottom >= window.innerHeight;
 
         if (isInViewport) {
-            document.body.style.overflow = 'hidden'; // Lock page scroll
+            document.body.style.overflow = 'hidden'; // lock page scroll
             setIsLocked(true);
+            setCaretVisible(false); // hide caret when scrolling down
         } else {
-            document.body.style.overflow = 'auto'; // Unlock page scroll
+            document.body.style.overflow = 'auto'; // unlock page scroll
             setIsLocked(false);
+            setCaretVisible(true); // show caret on scrolling up
         }
     };
 
@@ -47,9 +58,11 @@ function Home() {
             if (swiperRef.current) {
                 const swiper = swiperRef.current.swiper;
                 if (swiper.isEnd || swiper.isBeginning) {
-                    document.body.style.overflow = 'auto'; // Allow scrolling after the last project
+                    document.body.style.overflow = 'auto'; // allow scrolling after the last project
+                    setCaretVisible(true);
                 } else {
-                    document.body.style.overflow = 'hidden'; // Lock during swiping
+                    document.body.style.overflow = 'hidden'; // lock during swiping
+                    setCaretVisible(false);
                 }
             }
         };
@@ -73,7 +86,6 @@ function Home() {
 
     return (
         <div className={styles.homePage}>
-            {/* landing section w animation */}
             {/* landing section */}
             <section className={styles.landingContainer}>
                 <div className={styles.content}>
@@ -81,13 +93,13 @@ function Home() {
                 </div>
                 <FontAwesomeIcon 
                     icon={faChevronDown} 
-                    className={styles.caretIcon}
+                    className={`${styles.caretIcon} ${!caretVisible ? styles.hidden : ''}`}
+                    onClick={handleCaretClick}
                 />
             </section>
 
             {/* recent works section */}
-            <section className={styles.recentWorks}>
-
+            <section ref={recentWorksRef} className={styles.recentWorks}>
                 <div className={styles.recentContent}>
                     <h2 className={styles.sectionTitle}>recent work</h2>
                     <Swiper
@@ -97,41 +109,41 @@ function Home() {
                         creativeEffect={{
                             perspective: true,
                             prev: {
-                                translate: [0, 0, -200], // Adjust depth to prevent severe zoom-out
-                                scale: 0.9,             // Slightly reduce previous slide size
-                                opacity: 1            // Add opacity for smoother transitions
+                                translate: [0, 0, -200], 
+                                scale: 0.9,          
+                                opacity: 1           
                             },
                             next: {
-                                translate: [0, '100%', 0], // Align slides vertically
-                                scale: 0.9,               // Slightly reduce next slide size
-                                opacity: 1             // Consistent opacity for next slide
+                                translate: [0, '100%', 0], 
+                                scale: 0.9,         
+                                opacity: 1       
                             },
                             current: {
-                                translate: [0, 0, 100], // Center current slide fully visible
-                                scale: 1,            // No scaling for active slide
-                                opacity: 1           // Full visibility for active slide
+                                translate: [0, 0, 100], 
+                                scale: 1,          
+                                opacity: 1      
                             },
                         }}
                         direction="vertical"
                         slidesPerView={1}
                         mousewheel
                         centeredSlides
-                        speed={1000} // Smooth swipe transition
+                        speed={1000}
                         className={styles.swiperContainer}
                     >
                         {recentWorks.map((work) => (
                             <SwiperSlide key={work.id} className={styles.workSlide}>
-                            <div className={styles.projectSlide}>
-                                <img src={work.src} alt={work.alt} className={styles.projectImage} />
-                                <div className={styles.projectInfo}>
-                                <p className={styles.projectTitle}>{work.title}</p>
-                                <div className={styles.projectTags}>
-                                    {work.tags.map((tag, index) => (
-                                    <span className={styles.projectTag} key={index}>{tag}</span>
-                                    ))}
+                                <div className={styles.projectSlide}>
+                                    <img src={work.src} alt={work.alt} className={styles.projectImage} />
+                                    <div className={styles.projectInfo}>
+                                        <p className={styles.projectTitle}>{work.title}</p>
+                                        <div className={styles.projectTags}>
+                                            {work.tags.map((tag, index) => (
+                                                <span className={styles.projectTag} key={index}>{tag}</span>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
-                                </div>
-                            </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -142,7 +154,6 @@ function Home() {
             {/* experience section */}
             <section className={styles.experience}>
                 <img src={ExpImage} alt="Experience section" />
-
                 <table className={styles.experienceTable}>
                     <tbody>
                         <tr>

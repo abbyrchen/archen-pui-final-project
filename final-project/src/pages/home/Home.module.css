@@ -37,6 +37,9 @@ body, html {
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 1;
+    visibility: visible;
 }
 
 /* recent works section */
