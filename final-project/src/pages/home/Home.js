@@ -91,7 +91,7 @@ function Home() {
         <div className={styles.homePage}>
             {/* landing section */}
             <section className={styles.landingContainer}>
-                <FluidShader />
+                {/*<FluidShader />*/}
                 <div className={styles.content}>
                     <img src={IntroImage} alt="Hi, I'm Abby" />
                 </div>

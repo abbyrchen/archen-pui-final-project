@@ -29,12 +29,12 @@ body, html {
 }
 
 
-.landingContainer canvas {
+/*.landingContainer canvas {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1; /* Place behind content */
-}
+    z-index: -1; 
+}*/
 
 .caretIcon {
     color: white;
@@ -116,7 +116,7 @@ body, html {
 /* project slide details */
 .projectInfo {
     position: absolute;
-    top: 45%;
+    top: 55%;
     left: 5%;
     width: 90%;
     display: flex;

@@ -1,5 +1,5 @@
 import { React } from 'react';
-import PlayImage from '../../assets/playground.png';
+import PlayImage from '../../assets/playground_image.png';
 import styles from './Play.module.css';
 
 import xaiPaper from '../../assets/questiondriven.gif';
@@ -22,7 +22,10 @@ const galleryItems = [
 function Play() {
     return (
         <div className={styles.playPage}>
-            <img src={PlayImage} alt="Playground page" className={styles.playTitle} />
+            <section className={styles.playHeading}>
+                <h1 className={styles.playTitle}>Playground</h1>
+                <img src={PlayImage} className={styles.playImage} />
+            </section>
 
             {/* images of work */}
             <div className={styles.playgroundImages}>

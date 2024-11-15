@@ -1,18 +1,40 @@
 /* css for play page */
 
 .playPage {
-    margin: 5%;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+.playHeading {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
 .playTitle {
-    width: 50%;
-    height: auto;
+    font-family: 'OptiFlemish';
+    font-size: 6rem;
+    margin: 0;
+    margin-bottom: 1%;
 }
 
+.playImage {
+    width: 10%;
+    height: 10%;
+    animation: 5s rotate360 infinite linear; 
+}
+
+@keyframes rotate360 {
+    to { transform: rotate(360deg); }
+  }
+
+/* responsive grid of images */
 .playgroundImages {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
-    grid-gap: 20px; /* Space between gallery items */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
     padding: 20px;
     justify-content: center;
 }
