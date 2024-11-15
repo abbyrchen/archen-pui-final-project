@@ -60,7 +60,7 @@ function Header() {
                     </NavLink>
                 </li>
                 <li>
-                    <a href="/resume.pdf" target="_blank" className={styles.navItem}>
+                    <a href={`${process.env.PUBLIC_URL}/resume.pdf`} target="_blank" rel="noopener noreferrer" className={styles.navItem}>
                         resume
                     </a>
                 </li>

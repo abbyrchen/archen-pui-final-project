@@ -17,6 +17,9 @@ import wildMeImg from '../../assets/wildme.png'
 // import styles
 import styles from './Home.module.css';
 
+// import components
+import FluidShader from '../../components/FluidShader';
+
 
 const recentWorks = [
     { id: 1, src: InformativityImg, alt: 'informativity project', title: 'Informativity', tags: ['User Research', 'UX Design'] },
@@ -88,6 +91,7 @@ function Home() {
         <div className={styles.homePage}>
             {/* landing section */}
             <section className={styles.landingContainer}>
+                <FluidShader />
                 <div className={styles.content}>
                     <img src={IntroImage} alt="Hi, I'm Abby" />
                 </div>
