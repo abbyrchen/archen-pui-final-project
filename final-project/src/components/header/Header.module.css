@@ -38,3 +38,32 @@ nav {
     padding-right: 4%;
 }
 
+/* dropdown styling */
+.dropdownMenu {
+    position: absolute;
+    list-style: none;
+    top: 7%;
+    padding: 0.5rem 0;
+    margin: 0;
+    border: 1px solid white;
+    border-radius: 10px;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+
+.dropdownItem {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.dropdownItem:hover {
+    color: #7E7E7E;
+    text-decoration: underline;
+}
+
+

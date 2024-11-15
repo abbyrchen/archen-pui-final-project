@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
 
 // navbar header
 function Header() {
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    const handleMouseEnter = () => setDropdownVisible(true);
+    const handleMouseLeave = () => setDropdownVisible(false);
+
     return (
         <nav>
             <div className={styles.logo}>
@@ -13,13 +18,30 @@ function Header() {
             </div>
 
             <ul className={styles.navLinks}>
-                <li>
+                <li
+                   className={styles.navItem}
+                   onMouseEnter={handleMouseEnter}
+                   onMouseLeave={handleMouseLeave} 
+                >
                     <NavLink 
                         to="/" 
                         className={({ isActive }) => isActive ? `${styles.navItem} ${styles.current}` : styles.navItem}
                     >
                         work
                     </NavLink>
+                    {dropdownVisible && (
+                        <ul className={styles.dropdownMenu}>
+                            <li>
+                                <NavLink to="/work/informativity" className={styles.dropdownItem}>Informativity</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/work/cmu-baa-redesign" className={styles.dropdownItem}>CMU BAA</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/work/wildme-study" className={styles.dropdownItem}>WildMe</NavLink>
+                            </li>
+                        </ul>
+                    )}
                 </li>
                 <li>
                     <NavLink 
