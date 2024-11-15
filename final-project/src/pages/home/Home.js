@@ -1,21 +1,27 @@
+// import libraries
 import React, { useRef, useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'; 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCreative, Mousewheel } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
-import styles from './Home.module.css';
+
+// import icons + images
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'; 
 import IntroImage from '../../assets/homepage.png';
 import ExpImage from '../../assets/experience.png';
 import InformativityImg from '../../assets/informativity.png';
 import BAAImg from '../../assets/cmu_baa.png';
 import wildMeImg from '../../assets/wildme.png'
 
+// import styles
+import styles from './Home.module.css';
+
+
 const recentWorks = [
-    { id: 1, src: InformativityImg, alt: 'informativity project' },
-    { id: 2, src: BAAImg, alt: 'CMU BAA website redesign'},
-    { id: 3, src: wildMeImg, alt: 'WildMe research'},
+    { id: 1, src: InformativityImg, alt: 'informativity project', title: 'Informativity', tags: ['User Research', 'UX Design'] },
+    { id: 2, src: BAAImg, alt: 'CMU BAA website redesign', title: 'Cmu Baa', tags: ['Frontend Development', 'UX Design'] },
+    { id: 3, src: wildMeImg, alt: 'WildMe research', title: 'Wild Me', tags: ['User Research'] }
 ]
 
 function Home() {
@@ -67,6 +73,7 @@ function Home() {
 
     return (
         <div className={styles.homePage}>
+            {/* landing section w animation */}
             {/* landing section */}
             <section className={styles.landingContainer}>
                 <div className={styles.content}>
@@ -80,6 +87,7 @@ function Home() {
 
             {/* recent works section */}
             <section className={styles.recentWorks}>
+
                 <div className={styles.recentContent}>
                     <h2 className={styles.sectionTitle}>recent work</h2>
                     <Swiper
@@ -113,7 +121,17 @@ function Home() {
                     >
                         {recentWorks.map((work) => (
                             <SwiperSlide key={work.id} className={styles.workSlide}>
+                            <div className={styles.projectSlide}>
                                 <img src={work.src} alt={work.alt} className={styles.projectImage} />
+                                <div className={styles.projectInfo}>
+                                <p className={styles.projectTitle}>{work.title}</p>
+                                <div className={styles.projectTags}>
+                                    {work.tags.map((tag, index) => (
+                                    <span className={styles.projectTag} key={index}>{tag}</span>
+                                    ))}
+                                </div>
+                                </div>
+                            </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
