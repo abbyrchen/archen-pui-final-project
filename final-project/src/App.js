@@ -5,10 +5,12 @@ import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Play from './pages/play/Play';
+import CustomCursor from './components/cursor/CustomCursor';
 
 function App() {
   return (
     <Router>
+      <CustomCursor />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
