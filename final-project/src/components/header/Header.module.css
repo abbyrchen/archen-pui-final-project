@@ -5,6 +5,11 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 0px 10px;
+    z-index: 1000;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 /* logo styling */

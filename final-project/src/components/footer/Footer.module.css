@@ -5,6 +5,8 @@
     padding-left: 4rem;
     padding-top: 8rem;
     text-align: center;
+    z-index: 1000;
+    position: relative;
 }
 
 .socials {

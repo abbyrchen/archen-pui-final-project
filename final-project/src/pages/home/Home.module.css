@@ -1,156 +1,88 @@
-/* css for home page */
-.content {
-    text-align: center;
-}
+/* General Styling */
 body, html {
-    overflow-x: hidden;
-    overflow-y: auto; /* Restore vertical scrolling */
-  }
-  
-  body.lock-scroll {
-    overflow-y: hidden; /* Use this class to stop scrolling dynamically */
-  }
-
-/* landing container styling */
-.content img {
-    max-width: 80%;
-    height: auto;
-    margin-bottom: 2rem;
+    margin: 0;
+    padding: 0;
+    height: auto; /* Allow content to determine height */
+    overflow-y: auto; /* Enable scrolling */
+    overflow-x: hidden; /* Avoid horizontal overflow */
 }
 
-.landingContainer {
+/* Landing Section */
+.homeLandingWrapper {
+    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    height: calc(100vh - 110px);
-    position: relative;
-    text-align: center;
+    min-height: 100vh; /* Full screen height */
+    overflow: hidden; /* Prevent canvas overflow */
+    background: #000; /* Fallback background color */
 }
 
-
-/*.landingContainer canvas {
-    position: absolute;
+.fluidBackground {
+    position: absolute; /* Constrain canvas to the landing section */
     top: 0;
     left: 0;
-    z-index: -1; 
-}*/
+    width: 100%; /* Fill the parent container */
+    height: 100%; /* Match the height of the landing section */
+    z-index: 0; /* Ensure it’s behind the content */
+    overflow-y: hidden;
+    pointer-events: auto; /* Keep it interactive */
+  }
 
-.caretIcon {
-    color: white;
-    width: 2vw;
-    height: 1vw;
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-    opacity: 1;
-    visibility: visible;
-}
+  .fluidBackground canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure it scales properly */
+  }
 
-/* recent works section */
-.recentWorks {
-    height: 100vh;
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-
-.recentContent {
+.landingHeadingContainer {
+    position: relative; /* Stack above fluid background */
+    z-index: 2; /* Higher than background but below nav/footer */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     width: 100%;
-    height: 100%;
-    padding-top: 10%;
-}
+    min-height: 100vh; /* Ensure it spans the full viewport */
+  }
 
-.sectionTitle {
-    transform: rotate(-90deg);
-    font-size: 1.2em;
-    letter-spacing: 5px;
-    left: 10%;
-    position: absolute;
-    top: 50%;
-}
-
-/* swiper styling */
-.swiperContainer {
-    width: 57%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5%;
-}
-
-.workSlide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-    height: 100%;
-    position: relative;
-}
-
-.projectSlide {
-    position: relative;
-    width: 95%;
-    height: 100%;
-}
-
-.projectImage {
-    width: 100%;
+.landingHeadingContainer img {
+    max-width: 40%;
     height: auto;
-    object-fit: contain;
-    display: block;
+    animation: fadeIn 1s ease-in-out;
+    z-index: 2; /* Ensure above fluid background */
 }
 
-/* project slide details */
-.projectInfo {
+.caretIcon {
     position: absolute;
-    top: 55%;
-    left: 5%;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    pointer-events: none;
-    transform: translateY(-22%);
-}
-
-.projectTitle {
-    font-size: 5rem;
-    font-family: 'OptiFlemish';
-    font-weight: 300;
-    margin: 0;
-    margin-bottom: 1rem;
-}
-
-.projectTags {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    margin-left: auto;
-}
-
-.projectTag {
-    border: solid white 1px;
-    border-radius: 20px;
-    padding: 5px 10px;
-    font-size: 0.9rem;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
     color: white;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 3;
 }
 
+.caretIcon.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(10px);
+}
 
 /* my experience section */
+.experience {
+    position: relative; /* Ensure it's in the normal document flow */
+    z-index: 2; /* Above the fluid background */
+    min-height: 100vh; /* Full-page height */
+    overflow: visible; /* Allow content to overflow */
+}
+
 .experience img {
     width: 25%;
     height: auto;
@@ -178,4 +110,16 @@ body, html {
 
 .experienceTable td:last-child {
     text-align: right;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
