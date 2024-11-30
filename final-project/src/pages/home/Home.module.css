@@ -95,6 +95,8 @@ body, html {
     height: auto;
     margin-left: 3rem;
     margin-top: 6rem;
+    opacity: 0;
+    transform: translateX(-50px);
 }
 
 .experienceTable {
@@ -103,6 +105,11 @@ body, html {
     border-collapse: collapse;
     font-size: 1.4em;
     table-layout: fixed;
+}
+
+.experienceTable tr {
+    opacity: 0;
+    transform: translateX(-50px);
 }
 
 .experienceTable td {

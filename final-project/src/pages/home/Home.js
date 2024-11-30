@@ -30,21 +30,22 @@ const Home = () => {
     [0.5, 0.5, 0.5], // gray
   ];
 
-    useEffect(() => {
-        const lenis = new Lenis({
-            lerp: 0.08,
-            smoothWheel: true,
-          });
+  // smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: true,
+    });
       
-          const raf = (time) => {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-          };
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
       
-          requestAnimationFrame(raf);
+    requestAnimationFrame(raf);
       
-          return () => lenis.destroy();
-    }, []);
+    return () => lenis.destroy();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
