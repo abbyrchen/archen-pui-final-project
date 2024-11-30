@@ -21,7 +21,7 @@ const Home = () => {
     splatRadius: 0.01,           // Larger splat size
   };*/
 
-  const simulationRef = useRef();
+  const [caretVisible, setCaretVisible] = useState(true);
   const customColors = [
     [1, 1, 1], // White
     [0.5, 0.5, 0.5], // Gray
@@ -43,30 +43,59 @@ const Home = () => {
           return () => lenis.destroy();
     }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      // hide the caret after the user scrolls through the landing section
+      if (scrollY > 100) {
+        setCaretVisible(false);
+      } else {
+        setCaretVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleCaretClick = () => {
+    const scrollY = window.scrollY;
+    const scrollHeight = document.body.scrollHeight;
+    const windowHeight = window.innerHeight;
+    const scrollPosition = scrollHeight - windowHeight - scrollY;
+
+    window.scroll({
+      top: scrollHeight - scrollPosition,
+      behavior: 'smooth',
+    });
+  }
+
   return (
     <div className={styles.homePage}>
-            {/* Landing Section */}
+            {/* landing Section */}
             <section className={styles.homeLandingWrapper}>
-              {/* Fluid Simulation */} 
+              {/* fluid simulation */} 
               <div className={styles.fluidBackground}>
                 <FluidSimulation color={customColors} />
               </div>
 
               <div className={styles.landingHeadingContainer}>
                 <img src={IntroImage} alt="Hi, I'm Abby" />
-                <FontAwesomeIcon
-                  icon={faChevronDown}
-                  className="caret_icon"
-                />
               </div>
+              <FontAwesomeIcon
+                  icon={faChevronDown}
+                  className={`${styles.caretIcon} ${!caretVisible ? styles.hidden : ''}`}
+                  onClick={handleCaretClick}
+                />
             </section>
 
-            {/* Recent Works Section */}
+            {/* recent works */}
             <Projects />
 
-            {/* Experience Section */}
+            {/* experience */}
             <section className={styles.experience}>
-                <img src={ExpImage} alt="Experience section" />
+                <img src={ExpImage} alt="My Experience Section" />
                 <table className={styles.experienceTable}>
                 <tbody>
                     <tr>

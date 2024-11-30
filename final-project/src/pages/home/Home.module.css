@@ -1,71 +1,73 @@
-/* General Styling */
+/* general styling */
 body, html {
     margin: 0;
     padding: 0;
-    height: auto; /* Allow content to determine height */
-    overflow-y: auto; /* Enable scrolling */
-    overflow-x: hidden; /* Avoid horizontal overflow */
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-/* Landing Section */
+/* landing section */
 .homeLandingWrapper {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Full screen height */
-    overflow: hidden; /* Prevent canvas overflow */
-    background: #000; /* Fallback background color */
+    height: calc(100vh - 80px);
+    overflow: hidden; 
 }
 
-.fluidBackground {
-    position: absolute; /* Constrain canvas to the landing section */
-    top: 0;
-    left: 0;
-    width: 100%; /* Fill the parent container */
-    height: 100%; /* Match the height of the landing section */
-    z-index: 0; /* Ensure it’s behind the content */
-    overflow-y: hidden;
-    pointer-events: auto; /* Keep it interactive */
-  }
-
-  .fluidBackground canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure it scales properly */
-  }
-
 .landingHeadingContainer {
-    position: relative; /* Stack above fluid background */
-    z-index: 2; /* Higher than background but below nav/footer */
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 100%;
-    min-height: 100vh; /* Ensure it spans the full viewport */
+    min-height: calc(100vh-90px);
   }
 
 .landingHeadingContainer img {
-    max-width: 40%;
+    max-width: 70%;
     height: auto;
     animation: fadeIn 1s ease-in-out;
-    z-index: 2; /* Ensure above fluid background */
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* fluid background styling */
+.fluidBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow-y: hidden;
+    pointer-events: auto;
+}
+
+.fluidBackground canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .caretIcon {
     position: absolute;
-    bottom: 10%;
+    bottom: 8%;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     color: white;
+    opacity: 0.8;
     cursor: pointer;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     z-index: 3;
 }
 
@@ -75,12 +77,17 @@ body, html {
     transform: translateX(-50%) translateY(10px);
 }
 
+.caretIcon:hover {
+    transform: translateX(-50%) translateY(5px);
+    opacity: 0.8;
+}
+
 /* my experience section */
 .experience {
-    position: relative; /* Ensure it's in the normal document flow */
-    z-index: 2; /* Above the fluid background */
-    min-height: 100vh; /* Full-page height */
-    overflow: visible; /* Allow content to overflow */
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    overflow: visible;
 }
 
 .experience img {
