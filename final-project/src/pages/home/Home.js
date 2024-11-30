@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Lenis from "@studio-freight/lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styles from './Home.module.css';
 import Projects from '../../components/projects/Projects';
@@ -22,9 +24,10 @@ const Home = () => {
   };*/
 
   const [caretVisible, setCaretVisible] = useState(true);
+
   const customColors = [
-    [1, 1, 1], // White
-    [0.5, 0.5, 0.5], // Gray
+    [1, 1, 1], // white
+    [0.5, 0.5, 0.5], // gray
   ];
 
     useEffect(() => {
@@ -69,7 +72,64 @@ const Home = () => {
       top: scrollHeight - scrollPosition,
       behavior: 'smooth',
     });
-  }
+  };
+
+  // experience section animation
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // animate experience image
+    gsap.fromTo(
+      `.${styles.experience} img`,
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: `.${styles.experience}`,
+          start: "top 80%",
+        },
+      }
+    );
+
+    // animate table rows
+    gsap.fromTo(
+      `.${styles.experienceTable} tr`,
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: "power4.out",
+        stagger: {
+          amount: 1,
+          from: "start",
+        },
+        scrollTrigger: {
+          trigger: `.${styles.experienceTable}`,
+          start: "top 75%"
+        },
+      }
+    );
+  }, []);
+
+  const caretIcon = document.querySelector(`.${styles.caretIcon}`);
+
+  gsap.to(caretIcon, {
+      y: 10,
+      duration: 0.5,
+      ease: 'power1.inOut',
+      yoyo: true,
+      repeat: -1,
+      scrollTrigger: {
+        trigger: caretIcon,
+        start: 'top 50%',
+        end: 'bottom 50%',
+        toggleActions: 'play none none reverse',
+      },
+  });
 
   return (
     <div className={styles.homePage}>
