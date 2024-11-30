@@ -1,5 +1,4 @@
-/* recent works styling */
-
+/* Projects section */
 .projectsSection {
   position: relative;
   min-height: 100vh;
@@ -15,13 +14,12 @@
   flex-direction: column;
   gap: 15rem;
   list-style-type: none;
-  width: 90%;
+  width: 100%;
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
   align-items: center;
 }
 
-/* project card styling */
 .projectItem {
   width: 80%;
   height: 70vh;
@@ -33,13 +31,18 @@
   border-radius: 10px;
   transform-origin: center;
   transform: scale(0.9);
-  transition: transform 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  opacity: 0.8;
+  z-index: 0;
+  transition: all 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
 .projectItem:hover {
-  transform: scale(1);
+  transform: scale(1); /* Enlarges the card slightly */
+  opacity: 1; /* Increases brightness */
+  z-index: 1; /* Brings it to the front */
 }
 
+/* Project Image */
 .projectImage {
   position: absolute;
   width: 100%;
@@ -50,57 +53,60 @@
   z-index: 1;
 }
 
-.projectImage::after {
-  content: '';
-  width: 100%;
-  height: 100%;
-  display: block;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  transition: opacity 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  opacity: 1;
-}
-
 .projectImage img {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1); /* Default state */
   object-fit: cover;
   transition: transform 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
-.projectItem:hover .projectImage::after {
-  opacity: 0.5;
-}
 .projectItem:hover .projectImage img {
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1); /* Slight zoom on hover */
 }
 
-/* project card info (title and tags) */
 .projectInfo {
   position: relative;
   z-index: 5;
   display: flex;
-  flex-direction: row; 
   align-items: center;
   justify-content: space-between;
   padding: 0 20px 20px;
   width: 100%;
-  transition: padding 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transform: translateY(0) scale(1); /* Default position and scale */
+  transition: transform 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.3s ease;
 }
 
 .projectItem:hover .projectInfo {
-  padding: 0 40px 50px;
+  transform: translateY(-20px) scale(0.95); /* Moves up and shrinks slightly */
+}
+
+/* Overlay Effect */
+.projectImage::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(0deg, rgba(17, 17, 17, 0.5) 0%, rgba(17, 17, 17, 0) 100%);
+  z-index: 2;
+  transition: opacity 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  opacity: 1; /* Default dim overlay */
+}
+
+.projectItem:hover .projectImage::after {
+  opacity: 0.2; /* Lightens overlay on hover */
 }
 
 .projectTitle {
   font-size: 5rem;
   font-weight: 300;
-  font-family: 'OptiFlemish';
+  font-family: "OptiFlemish";
   line-height: 1;
   margin: 0;
   text-align: left;
@@ -123,7 +129,6 @@
   border: solid #bbb 1px;
   border-radius: 20px;
   transition: background-color 0.3s ease, color 0.3s ease;
-  white-space: nowrap;
 }
 
 .projectTag:hover {

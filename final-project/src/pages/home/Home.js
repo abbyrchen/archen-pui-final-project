@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Lenis from "@studio-freight/lenis";
 
 import styles from './Home.module.css';

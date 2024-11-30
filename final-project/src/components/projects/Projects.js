@@ -39,55 +39,24 @@ const recentWorks = [
 
 const Projects = () => {
   useEffect(() => {
-    const cursor = document.createElement("div");
-    cursor.classList.add(styles.cursor)
-    document.body.appendChild(cursor);
-
-    const updateCursor = (e) => {
-        gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
-    };
-
-    window.addEventListener("mousemove", updateCursor);
-
-    const links = document.querySelectorAll(`.${styles.projectItem}`);
-
-    links.forEach((link) => {
-        link.addEventListener("mouseenter", () =>
-            cursor.classList.add(styles.cursorActive)
-        );
-        link.addEventListener("mouseleave", () =>
-            cursor.classList.remove(styles.cursorActive)
-        );
-    });
-
     const projects = document.querySelectorAll(`.${styles.projectItem}`);
-    projects.forEach((project, i) => {
-        const timeline = gsap.timeline({
-            scrollTrigger: {
-                trigger: project,
-                start: "top center",
-                end: "bottom center",
-                scrub: true,
-            },
-        });
 
-        timeline
-            .fromTo(
-                project,
-                { scale: 0.9, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 0.5 }
-            )
-            .to(
-                project,
-                { opacity: 0.7, scale: 0.95, duration: 0.5 },
-                "+=0.5"
-            );
+    projects.forEach((project) => {
+      gsap.fromTo(
+        project,
+        { scale: 0.95, opacity: 0.8 },
+        {
+          scale: 1, // Reduced scale for subtle effect
+          opacity: 1,
+          scrollTrigger: {
+            trigger: project,
+            start: "top 75%", // Adjust the viewport trigger point
+            end: "top 25%",
+            scrub: true, // Smooth animation
+          },
+        }
+      );
     });
-
-    return () => {
-        window.removeEventListener("mousemove", updateCursor);
-        cursor.remove();
-    };
   }, []);
 
   return (
@@ -102,9 +71,9 @@ const Projects = () => {
               <h3 className={styles.projectTitle}>{work.title}</h3>
               <div className={styles.projectTags}>
                 {work.tags.map((tag, index) => (
-                    <span key={index} className={styles.projectTag}>
-                        {tag}
-                    </span>
+                  <span key={index} className={styles.projectTag}>
+                    {tag}
+                  </span>
                 ))}
               </div>
             </div>
