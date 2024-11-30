@@ -18,6 +18,7 @@
     font-size: 6rem;
     margin: 0;
     margin-bottom: 1%;
+    font-weight: 200;
 }
 
 .playImage {
@@ -28,7 +29,7 @@
 
 @keyframes rotate360 {
     to { transform: rotate(360deg); }
-  }
+}
 
 /* responsive grid of images */
 .playgroundImages {

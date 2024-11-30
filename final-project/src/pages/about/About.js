@@ -1,24 +1,60 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
+import Lenis from "@studio-freight/lenis";
+
 import styles from './About.module.css';
-import AboutQuote from '../../assets/about.png';
+import Sparkle from '../../assets/sparkle.png';
 import ProfileImage from '../../assets/profileimage.JPG';
-import Abby from '../../assets/abby.png';
 
 function About() {
+    // smooth scroll
+    useEffect(() => {
+        const lenis = new Lenis({
+          lerp: 0.08,
+          smoothWheel: true,
+        });
+          
+        const raf = (time) => {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        };
+          
+        requestAnimationFrame(raf);
+          
+        return () => lenis.destroy();
+    }, []);
+
     return (
         <div className={styles.aboutPage}>
-            <img src={AboutQuote} alt="driven by curiosity and fueled by creativity, i'm a designer, explorer, & creator bringing ideas to life" className={styles.aboutImage} />
-
-            <div className={styles.aboutContainer}>
-                <div className={styles.imageContainer}>
-                    <img src={ProfileImage} alt="image of me on a beach in qingdao" />
+            <section className={styles.intro}>
+                <div className={styles.introTextContainer}>
+                    <h1 className={styles.firstLine}>
+                        driven by <span className={styles.emphasis}>curiosity</span> and fueled by
+                    </h1>
+                    <h1 className={styles.secondLine}>
+                        <span className={styles.emphasis}>creativity</span>, i'm a <span className={styles.emphasis}>Designer</span>
+                    </h1>
+                    <div className={styles.flexRow}>
+                        <div className={styles.sparkleImg}>
+                            <img src={Sparkle} alt="rotating 3d sparkle"/>
+                        </div>
+                        <div className={styles.rolesContainer}>
+                            <h2>Explorer,</h2>
+                            <h2>& Creator</h2>
+                        </div>
+                    </div>
+                    <h1 className={styles.lastLine}>bringing ideas to life.</h1>
                 </div>
-                <div className={styles.textContainer}>
-                    <div className={styles.intro}>
-                        <h1>Hi, I’m <span className={styles.fancy}>Abby</span></h1>
+            </section>
+
+            <section className={styles.bioSection}>
+                <div className={styles.bioContainer}>
+                    <div className={styles.imageContainer}>
+                        <img src={ProfileImage} alt="image of me on a beach in Qingdao" className={styles.profileImage}/>
                     </div>
 
-                    <p>
+                    <div className={styles.textContainer}>
+                        <h2>Hi, I'm <span className={styles.fancy}>Abby</span></h2>
+                        <p>
                         With a background in computer science, business, and design, I strive to use my skills and passion for 
                         creating to craft innovative, user-centered solutions. While I primarily have experience in interaction 
                         design, frontend development, and user research, I have completed coursework in areas such as visual design 
@@ -39,8 +75,9 @@ function About() {
                         To stay active, I enjoy running, hiking, pickleball, and volleyball, while in my downtime, I love crocheting, 
                         knitting, and sewing—and I'm constantly seeking new creative hobbies.
                     </p>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     );
 }
