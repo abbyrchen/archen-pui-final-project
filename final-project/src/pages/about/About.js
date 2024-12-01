@@ -1,5 +1,6 @@
 import { React, useEffect } from 'react';
 import Lenis from "@studio-freight/lenis";
+import { gsap } from "gsap";
 
 import styles from './About.module.css';
 import Sparkle from '../../assets/sparkle.png';
@@ -21,6 +22,53 @@ function About() {
         requestAnimationFrame(raf);
           
         return () => lenis.destroy();
+    }, []);
+
+    // page load animation for intro text
+    useEffect(() => {
+        const timeline = gsap.timeline({
+            defaults: {
+                duration: 0.8,
+                ease: "power2.out",
+            },
+        });
+
+        console.log("GSAP Timeline initialized"); 
+
+        // add animation for each line + img
+        timeline
+            .fromTo(`.${styles.firstLine}`, 
+                { opacity: 0, y: 50 }, 
+                { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+            )
+            .fromTo(`.${styles.secondLine}`, 
+                { opacity: 0, y: 50 }, 
+                { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+                "-=0.5"
+            )
+            .fromTo(`.${styles.sparkleImg}`, 
+                { opacity: 0, scale: 0.8 }, 
+                { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" },
+                "-=0.4"
+            )
+            .fromTo(`.${styles.rolesContainer} h2`, 
+                { opacity: 0, y: 50 }, 
+                { opacity: 1, y: 0, stagger: 0.2, duration: 0.8, ease: "power2.out" },
+                "-=0.4"
+            )
+            .fromTo(`.${styles.lastLine}`, 
+                { opacity: 0, y: 50 }, 
+                { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+                "-=0.4"
+            );
+
+
+            console.log("First Line:", document.querySelector(`.${styles.firstLine}`));
+console.log("Second Line:", document.querySelector(`.${styles.secondLine}`));
+console.log("Sparkle Image:", document.querySelector(`.${styles.sparkleImg}`));
+console.log("Roles Container:", document.querySelector(`.${styles.rolesContainer}`));
+console.log("Last Line:", document.querySelector(`.${styles.lastLine}`));
+
     }, []);
 
     return (
@@ -67,7 +115,7 @@ function About() {
                         The Home Depot and UX Designer for CMU’s Software Engineering Institute.
                     </p>
                     <p>
-                        Outside the classroom, I’m the captain of <a href="">CMU’s volleyball team</a>, Vice President of the Asian Desi Pacific Islander Student Athlete Association, 
+                        Outside the classroom, I’m an alumni captain of <a href="">CMU’s volleyball team</a>, Vice President of the Asian Desi Pacific Islander Student Athlete Association, 
                         and a fashion designer for Lunar Gala, creating a line of clothing. I have a passion for travel and 
                         exploring new cultures—I recently studied abroad in Amsterdam, visiting many places across Europe, 
                         and I'm preparing for a solo trip to China next. I also love discovering new foods (check out my Beli) 

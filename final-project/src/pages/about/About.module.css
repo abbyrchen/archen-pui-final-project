@@ -10,20 +10,20 @@
 }
 
 .intro {
-    padding: 100px 20px;
     justify-content: center;
     align-items: center;
+    height: calc(100vh - 90px);
 }
 
 .introTextContainer {
     max-width: 800px;
     margin: auto;
-    text-align: left;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60vh;
+    height: 100%;
     position: relative;
 }
 
@@ -32,6 +32,8 @@
     font-size: 3rem;
     font-weight: 200;
     margin: 0;
+    transform: none;
+    opacity: 1;
 }
 
 .lastLine {
@@ -40,6 +42,8 @@
     align-self: flex-end; 
     margin-right: 90px;
     margin-top: 0;
+    transform: none;
+    opacity: 1;
 }
 
 .emphasis {
@@ -52,7 +56,8 @@
     display: flex;
     align-items: flex-start;
     margin-top: 1rem;
-    gap: 1rem;
+    gap: 6rem;
+    margin-bottom: 0;
 }
 
 .rolesContainer {
@@ -75,6 +80,7 @@
     height: 250px;
     filter: grayscale(100%);
     animation: 5s rotate360 infinite linear; 
+    transform-origin: center;
 }
 
 @keyframes rotate360 {
@@ -100,6 +106,7 @@
 .fancy {
     font-family: 'OptiFlemish';
     font-size: 4em;
+    font-weight: 200;
 }
 
 .imageContainer {
@@ -121,4 +128,5 @@
 
 .textContainer h2 {
     font-size: 2rem;
+    font-weight: 200;
 }
