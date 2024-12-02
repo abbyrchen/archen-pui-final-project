@@ -1,10 +1,13 @@
 import { React, useEffect } from 'react';
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styles from './About.module.css';
 import Sparkle from '../../assets/sparkle.png';
 import ProfileImage from '../../assets/profileimage.JPG';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function About() {
     // smooth scroll
@@ -61,14 +64,56 @@ function About() {
                 { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
                 "-=0.4"
             );
+    }, []);
 
+    // animations for bio section
+    useEffect(() => {
+        const timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".bioContainer",
+                start: "top 80%",
+                toggleActions: "play none none none",
+                markers: true,
+            },
+            defaults: {
+                duration: 1,
+                ease: "power2.out",
+            },
+        });
 
-            console.log("First Line:", document.querySelector(`.${styles.firstLine}`));
-console.log("Second Line:", document.querySelector(`.${styles.secondLine}`));
-console.log("Sparkle Image:", document.querySelector(`.${styles.sparkleImg}`));
-console.log("Roles Container:", document.querySelector(`.${styles.rolesContainer}`));
-console.log("Last Line:", document.querySelector(`.${styles.lastLine}`));
+        // picture fade in
+        timeline.fromTo(".bioImage", 
+            { opacity: 0, x: -100 },
+            { opacity: 1, x: 0 }
+        );
 
+        // title letter by letter animation
+        const hiIm = document.querySelector(".bioHi");
+        const abby = document.querySelector(".bioAbby");
+
+        const hiLetters = hiIm.textContent.split("");
+        hiIm.innerHTML = hiLetters.map((letter) => `<span>${letter}</span>`).join("");
+
+        const abbyLetters = abby.textContent.split("");
+        abby.innerHTML = abbyLetters.map((letter) => `<span>${letter}</span>`).join("");
+
+        timeline.fromTo(".bioHi span", 
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, stagger: 0.05, duration: 1 },
+            "-=0.5"
+        )
+        .fromTo(".bioAbby span",
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, stagger: 0.05, duration: 1 },
+            "-=0.5"
+        );
+
+        // paragraph animation
+        timeline.fromTo(".bioText", 
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, stagger: 0.3, duration: 1 },
+            "-=0.4"
+        );
     }, []);
 
     return (
@@ -97,24 +142,30 @@ console.log("Last Line:", document.querySelector(`.${styles.lastLine}`));
             <section className={styles.bioSection}>
                 <div className={styles.bioContainer}>
                     <div className={styles.imageContainer}>
-                        <img src={ProfileImage} alt="image of me on a beach in Qingdao" className={styles.profileImage}/>
+                        <img 
+                            src={ProfileImage} 
+                            alt="image of me on a beach in Qingdao" 
+                            className={`${styles.profileImage} bioImage`} 
+                        />
                     </div>
 
                     <div className={styles.textContainer}>
-                        <h2>Hi, I'm <span className={styles.fancy}>Abby</span></h2>
-                        <p>
+                        <h2>
+                            <span className="bioHi">Hi, I'm </span>
+                            <span className={`${styles.fancy} bioAbby`}>Abby</span></h2>
+                        <p className="bioText">
                         With a background in computer science, business, and design, I strive to use my skills and passion for 
                         creating to craft innovative, user-centered solutions. While I primarily have experience in interaction 
                         design, frontend development, and user research, I have completed coursework in areas such as visual design 
                         and information architecture, equipping me with a versatile toolkit for solving diverse design challenges.
                     </p>
-                    <p>
+                    <p className="bioText">
                         I'm a senior at Carnegie Mellon University, studying Information Systems and Human-Computer Interaction.
                         Currently, I’m a Teaching Assistant for Mobile Web Design and Development, mentoring and grading 40 students 
                         on design principles and frontend programming. Previously, I’ve worked as a Product Management Intern at 
                         The Home Depot and UX Designer for CMU’s Software Engineering Institute.
                     </p>
-                    <p>
+                    <p className="bioText">
                         Outside the classroom, I’m an alumni captain of <a href="">CMU’s volleyball team</a>, Vice President of the Asian Desi Pacific Islander Student Athlete Association, 
                         and a fashion designer for Lunar Gala, creating a line of clothing. I have a passion for travel and 
                         exploring new cultures—I recently studied abroad in Amsterdam, visiting many places across Europe, 

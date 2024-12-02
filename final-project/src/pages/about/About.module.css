@@ -13,6 +13,8 @@
     justify-content: center;
     align-items: center;
     height: calc(100vh - 90px);
+    border: green solid 2px;
+    margin-bottom: 10%;
 }
 
 .introTextContainer {
@@ -94,6 +96,7 @@
     align-items: flex-start;
     justify-content: center;
     padding: 60px 0;
+    border: red solid 2px;
 }
 
 .bioContainer {
@@ -117,13 +120,27 @@
 
 .imageContainer img {
     border-radius: 10px;
-    max-width: 400px;
+    max-width: 600px;
     height: auto;
     object-fit: cover;
+    opacity: 0;
+    transform: scale(0.8);
 }
 
 .textContainer {
     flex: 2;
+}
+
+.bioHi span
+.bioAbby span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.bioText {
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .textContainer h2 {
